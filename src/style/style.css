@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Raleway&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata&display=swap');
 
 body {
     font-family: 'Raleway', sans-serif;
@@ -22,10 +23,12 @@ h1 {
 
 .flex-item{
     flex-grow: 1;
+    margin: 10px;
 }
 
 .flex-item-double{
     flex-grow: 2;
+    margin: 10px;
 }
 
 .flex-row{
@@ -38,13 +41,12 @@ h1 {
     flex-direction: column;
 }
 
-.input-side{
-    width: 50px;
-}
+
 
 /* Search fields styles */
 .search-field{
-    width: 40%;
+    width: 50%;
+    font-family: 'Inconsolata', monospace;;
     transition: width 0.4s ease-in-out;
     box-sizing: border-box;
     border: 4px solid black;
@@ -70,6 +72,7 @@ label{
 }
 
 .title-input{
+    font-family: 'Inconsolata', monospace;;
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
@@ -81,6 +84,7 @@ label{
 }
 
 .body-input{
+    font-family: 'Inconsolata', monospace;;
     width: 100%;
     height: 200px;
     padding: 12px 20px;
@@ -102,7 +106,7 @@ label{
   color: black;
   cursor: pointer;
   display: inline-block;
-  font-family: Roobert,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-family: 'Inconsolata', monospace;
   font-size: 16px;
   font-weight: 600;
   line-height: normal;
@@ -136,3 +140,69 @@ label{
   box-shadow: none;
   transform: translateY(0);
 }
+
+/* notes item styles*/
+
+.card{
+    background-color: azure;
+    width: 250px;
+    margin: 10px;
+    height: fit-content;
+    border: 4px solid black;
+}
+
+.card-title{
+    color:#1A1A1A;
+    height: 40px;
+    padding: 10px;
+    margin: 0;
+}
+
+.card-body{
+    color: #1A1A1A;
+    height: 150px;
+    overflow: auto;
+    font-size: smaller;
+    padding: 5px;
+}
+
+.card-button{
+    height: fit-content;
+}
+
+.delete-btn{
+    width: 50%;
+    height: 50px;
+    background-color: transparent;
+    color: red;
+    cursor: pointer;
+    border: 2px solid black;
+}
+
+.delete-btn:hover{
+    background-color: red;
+    color: azure;
+}
+
+.delete-btn:active{
+    background-color: rgb(114, 2, 2);
+}
+
+.archive-btn{
+    width: 50%;
+    height: 50px;
+    background-color: transparent;
+    color: orange;
+    cursor: pointer;
+    border: 2px solid black;
+}
+
+.archive-btn:hover{
+    background-color: orange;
+    color: azure;
+}
+
+.archive-btn:active{
+    background-color: rgb(146, 96, 3);
+}
+

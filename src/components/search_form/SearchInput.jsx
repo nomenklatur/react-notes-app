@@ -19,7 +19,7 @@ class SearchInput extends React.Component{
         return(
             <div className='container flex-item'>
                 <form>
-                    <input className='search-field' type="text" placeholder='Cari Notes' value={this.state.searches} onChange={this.onSearchEventHandler} />
+                    <input className='search-field' type="text" placeholder='Cari...' value={this.state.searches} onChange={this.onSearchEventHandler} />
                 </form>
             </div>
         );
