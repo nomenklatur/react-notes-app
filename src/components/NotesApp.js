@@ -20,10 +20,7 @@ class NotesApp extends React.Component{
           <SearchInput />
           <NotesInput />
         </div>
-        <div className='flex-item-double flex-column'>
           <NotesList notes={this.state.notes}/>
-          <NotesList notes={this.state.notes}/>
-        </div>
       </div>
     );
   }
