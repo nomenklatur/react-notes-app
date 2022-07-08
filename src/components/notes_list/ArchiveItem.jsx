@@ -1,7 +1,7 @@
 import React from 'react';
 import { showFormattedDate } from '../../utils';
 
-function ArchiveItem({ title, body, createdAt }){
+function ArchiveItem({ title, body, createdAt, deleteNote, id }){
     return(
         <div className="card flex-item">
             <div className='card-title'>
@@ -12,7 +12,7 @@ function ArchiveItem({ title, body, createdAt }){
                 <p>{body}</p>
             </div>
             <div className='card-button'>
-                <button className='delete-btn'>Hapus</button>
+                <button className='delete-btn' onClick={() => deleteNote(id)}>Hapus</button>
                 <button className='move-btn'>Pindahkan</button>
             </div>
         </div>

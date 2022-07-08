@@ -10,6 +10,14 @@ class NotesApp extends React.Component{
     this.state = {
       notes: getInitialData(), //initialize state
     }
+
+    //binding handler
+    this.deleteNoteHandler = this.deleteNoteHandler.bind(this);
+  }
+
+  deleteNoteHandler(id){
+    const newNotes = this.state.notes.filter(note => note.id !== id);
+    this.setState({notes: newNotes});
   }
 
   render(){
@@ -20,7 +28,7 @@ class NotesApp extends React.Component{
           <SearchInput />
           <NotesInput />
         </div>
-          <NotesList notes={this.state.notes}/>
+          <NotesList notes={this.state.notes} deleteNote={this.deleteNoteHandler}/>
       </div>
     );
   }
