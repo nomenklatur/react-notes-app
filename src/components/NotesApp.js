@@ -1,7 +1,7 @@
 import React from 'react';
 import SearchInput from './search_form/SearchInput';
 import NotesInput from './input_form/NotesInput';
-import NotesItem from './notes_list/NotesItem';
+import NotesList from './notes_list/NotesList';
 import { getInitialData } from '../utils';
 
 class NotesApp extends React.Component{
@@ -21,11 +21,8 @@ class NotesApp extends React.Component{
           <NotesInput />
         </div>
         <div className='flex-item-double flex-column'>
-          {
-            this.state.notes.map((note) => (
-              <NotesItem key={note.id} {...note} />
-            ))
-          }
+          <NotesList notes={this.state.notes}/>
+          <NotesList notes={this.state.notes}/>
         </div>
       </div>
     );

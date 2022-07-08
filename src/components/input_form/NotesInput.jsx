@@ -16,11 +16,9 @@ class NotesInput extends React.Component{
     }
 
     onTitleChangeHandler(event){
-        if(event.target.value.length <= 50 ){
-            this.setState({
-                title: event.target.value,
-                charLeft: 50 - event.target.value.length,
-            });
+        this.setState({charLeft: 50 - event.target.value.length});
+        if(this.state.charLeft > 0){
+            this.setState({title: event.target.value});
         }
     }
 

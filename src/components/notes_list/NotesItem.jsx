@@ -3,7 +3,7 @@ import { showFormattedDate } from '../../utils';
 function NotesItem({ title, body, createdAt}){
 
     return(
-        <div className="card">
+        <div className="card flex-item">
             <div className='card-title'>
                 <h3 style={{padding: '0', margin: '0'}}>{title}</h3>
                 <p style={{padding: '0', margin: '0', fontSize: '12px'}}>{showFormattedDate(createdAt)}</p>
