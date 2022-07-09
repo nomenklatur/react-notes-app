@@ -13,13 +13,14 @@ class NotesInput extends React.Component{
         //handler binding
         this.onTitleChangeHandler = this.onTitleChangeHandler.bind(this);
         this.onBodyChangeHandler = this.onBodyChangeHandler.bind(this);
+        this.onSubmitFormHandler = this.onSubmitFormHandler.bind(this);
     }
 
     onTitleChangeHandler(event){
-        this.setState({charLeft: 50 - event.target.value.length});
         if(this.state.charLeft > 0){
             this.setState({title: event.target.value});
         }
+        this.setState({charLeft: 50 - event.target.value.length});
     }
 
     onBodyChangeHandler(event){
@@ -31,11 +32,17 @@ class NotesInput extends React.Component{
         });
     }
 
+    onSubmitFormHandler(e){
+        e.preventDefault();
+        this.props.addNote(this.state.title, this.state.body);
+        this.setState({title: '', body: ''});
+    }
+
     render(){
         return(
             <div className='container flex-item'>
-                <form>
-                    <label htmlFor="title" style={{color: this.state.charLeft === 0? 'red' : ''}}>Karakter: {this.state.charLeft}/50</label>
+                <form onSubmit={this.onSubmitFormHandler}>
+                    <label htmlFor="title" style={{color: this.state.charLeft <= 0? 'red' : ''}}>Karakter: {this.state.charLeft >= 0? this.state.charLeft : 0}/50</label>
                     <input type="text" placeholder='Judul' name='title' className='title-input' value={this.state.title} onChange={this.onTitleChangeHandler} />
                     <textarea placeholder='Tulis notes ...' className='body-input' value={this.state.body} onChange={this.onBodyChangeHandler}></textarea>
                     <input type="submit" value="Tambah" className='button-28'/>

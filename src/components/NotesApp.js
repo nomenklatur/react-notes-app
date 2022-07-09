@@ -8,12 +8,17 @@ class NotesApp extends React.Component{
   constructor(props){
     super(props);
     this.state = {
-      notes: getInitialData(), //initialize state
+      //initialize state
+      notes: getInitialData(),
+      searchedNotes: [],
+      notSearching: true,
     }
 
     //binding handler
     this.deleteNoteHandler = this.deleteNoteHandler.bind(this);
     this.changeNoteHandler = this.changeNoteHandler.bind(this);
+    this.searchNotesHandler = this.searchNotesHandler.bind(this);
+    this.addNotesHandler = this.addNotesHandler.bind(this);
   }
 
   deleteNoteHandler(id){
@@ -34,15 +39,46 @@ class NotesApp extends React.Component{
     this.setState({oldNotes});
   }
 
+  searchNotesHandler(keyword){
+    if (keyword === ''){
+      this.setState({searchedNotes: [], notSearching: true});
+    }
+    else{
+      const tempNotes = [];
+      for (const note of this.state.notes){
+        const searchedTitle = note.title.search(keyword);
+        if (searchedTitle !== -1){
+          tempNotes.push(note);
+        }
+      }
+      this.setState({searchedNotes: tempNotes, notSearching: false});
+    }
+  }
+
+  addNotesHandler(title, body){
+    const newItem = [
+      ...this.state.notes,
+      {
+        id: +new Date(),
+        title,
+        body,
+        archived: false,
+        createdAt: new Date(),
+      }
+    ]
+
+    this.setState({notes: newItem});
+  }
+
   render(){
     return(
       <div className='main-container flex-row'>
         <div className='flex-item flex-column'>
           <h1>My Notes App</h1>
-          <SearchInput />
-          <NotesInput />
+          <SearchInput searchNote={this.searchNotesHandler}/>
+          <NotesInput addNote={this.addNotesHandler}/>
         </div>
-          <NotesList notes={this.state.notes} deleteNote={this.deleteNoteHandler} changeNote={this.changeNoteHandler}/>
+          <NotesList notes={this.state.notSearching? this.state.notes : this.state.searchedNotes} deleteNote={this.deleteNoteHandler} changeNote={this.changeNoteHandler}/>
       </div>
     );
   }
