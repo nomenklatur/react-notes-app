@@ -1,6 +1,6 @@
 import { showFormattedDate } from '../../utils';
 
-function NotesItem({ title, body, createdAt, deleteNote, id}){
+function NotesItem({ title, body, createdAt, deleteNote, id, changeNote}){
 
     return(
         <div className="card flex-item">
@@ -13,7 +13,7 @@ function NotesItem({ title, body, createdAt, deleteNote, id}){
             </div>
             <div className='card-button'>
                 <button className='delete-btn' onClick={() => deleteNote(id)}>Hapus</button>
-                <button className='archive-btn'>Arsip</button>
+                <button className='archive-btn' onClick={() => changeNote(id)}>Arsip</button>
             </div>
         </div>
     );

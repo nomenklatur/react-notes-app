@@ -2,7 +2,7 @@ import React from 'react';
 import NotesItem from './NotesItem';
 import ArchiveItem from './ArchiveItem';
 
-function NotesList({ notes, deleteNote }){
+function NotesList({ notes, deleteNote, changeNote }){
     const activeNotes = notes.filter(note => note.archived === false);
     const archivedNotes = notes.filter(note => note.archived === true);
 
@@ -10,7 +10,7 @@ function NotesList({ notes, deleteNote }){
         if(activeNotes.length>0){
             return(
                     activeNotes.map((note) => (
-                        <NotesItem key={note.id} {...note} deleteNote={deleteNote} id={note.id} />
+                        <NotesItem key={note.id} {...note} deleteNote={deleteNote} id={note.id} changeNote={changeNote} />
                     ))
             );
         }else{
@@ -22,7 +22,7 @@ function NotesList({ notes, deleteNote }){
         if(archivedNotes.length>0){
             return(
                     archivedNotes.map((note) => (
-                        <ArchiveItem key={note.id} {...note} deleteNote={deleteNote} id={note.id} />
+                        <ArchiveItem key={note.id} {...note} deleteNote={deleteNote} id={note.id} changeNote={changeNote} />
                     ))
             );
         }else{

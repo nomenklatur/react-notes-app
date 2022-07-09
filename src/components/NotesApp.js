@@ -13,11 +13,25 @@ class NotesApp extends React.Component{
 
     //binding handler
     this.deleteNoteHandler = this.deleteNoteHandler.bind(this);
+    this.changeNoteHandler = this.changeNoteHandler.bind(this);
   }
 
   deleteNoteHandler(id){
     const newNotes = this.state.notes.filter(note => note.id !== id);
     this.setState({notes: newNotes});
+  }
+
+  changeNoteHandler(id){
+    const oldNotes = this.state.notes;
+    const index = oldNotes.findIndex(note => note.id === id);
+    if (oldNotes[index].archived){
+        oldNotes[index].archived = false;
+    }
+    else{
+        oldNotes[index].archived = true;
+    }
+
+    this.setState({oldNotes});
   }
 
   render(){
@@ -28,7 +42,7 @@ class NotesApp extends React.Component{
           <SearchInput />
           <NotesInput />
         </div>
-          <NotesList notes={this.state.notes} deleteNote={this.deleteNoteHandler}/>
+          <NotesList notes={this.state.notes} deleteNote={this.deleteNoteHandler} changeNote={this.changeNoteHandler}/>
       </div>
     );
   }
